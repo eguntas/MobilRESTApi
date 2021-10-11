@@ -22,21 +22,30 @@ namespace MobilApi.Controllers
         public ActionResult GetBolum()
         {
             var bolum = _appRepository.GetBolum().ToList();
-            return Ok(bolum);
+            if(bolum!= null)
+                return Ok(bolum);
+            else
+                return NotFound();
         }
         [HttpGet]
         [Route("Find/{id}")]
         public ActionResult GetBolumById(int id)
         {
             var bolum = _appRepository.GetBolumById(id);
-            return Ok(bolum);
+            if(bolum!= null)
+                return Ok(bolum);
+            else
+                return NotFound();
         }
         [HttpGet]
         [Route("Findname/{BolumAdi}")]
         public ActionResult GetBolumByAd(string BolumAdi)
         {
             var bolum = _appRepository.GetBolumByAd(BolumAdi);
-            return Ok(bolum);
+            if(bolum!= null)
+                return Ok(bolum);
+            else
+                return NotFound();
         }
 
     }
