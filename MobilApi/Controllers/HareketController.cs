@@ -37,7 +37,10 @@ namespace MobilApi.Controllers
         public ActionResult GetHareketById(int id)
         {
             var hareket = _appRepository.GetHareketById(id);
-            return Ok(hareket);
+            if(hareket!=null)
+                return Ok(hareket);
+            else 
+                return NotFound();
 
         }
         [Route("Add")]
@@ -58,7 +61,10 @@ namespace MobilApi.Controllers
         public ActionResult GetBolumrapor(int BolumId, String HareketTipi)
         {
             var rapor = _appRepository.GetBolumRapor(BolumId, HareketTipi);
-            return Ok(rapor);
+            if(rapor!=null)
+                return Ok(rapor);
+            else
+                return NotFound();
         }
     }
 }
