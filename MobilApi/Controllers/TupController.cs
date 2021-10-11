@@ -23,21 +23,30 @@ namespace MobilApi.Controllers
         public ActionResult GetTupTanim()
         {
             var tup = _appRepository.GetTupTanim().ToList();
-            return Ok(tup);
+            if(tup!=null)
+                return Ok(tup);
+            else
+                return NotFound();
         }
 
         [Route("find/{id}")]
         public ActionResult GetTupTanimById(int id)
         {
             var tup = _appRepository.GetTupTanimById(id);
-            return Ok(tup);
+            if(tup!=null)
+                return Ok(tup);
+             else
+                return NotFound();
 
         }
         [Route("tupkayit")]
         public ActionResult GetTupKayit()
         {
             var tup = _appRepository.GetTupKayit().ToList();
-            return Ok(tup);
+            if(tup!= null)
+                return Ok(tup);
+            else   
+                return NotFound();
         }
         [HttpPost]
         [Route("Add")]
@@ -56,14 +65,20 @@ namespace MobilApi.Controllers
         public ActionResult GetTupByTupAdi(int TupSeriNo)
         {
             var tup = _appRepository.GetTupBySeriNo(TupSeriNo);
-            return Ok(tup);
+            if(tup!=null)
+                return Ok(tup);
+            else
+                return NotFound();
         }
         [HttpGet]
         [Route("findname/{TupAdi}")]
         public ActionResult GetTupByAd(String TupAdi)
         {
             var tup = _appRepository.GetTupTanimByAd(TupAdi);
-            return Ok(tup);
+            if(tup!=null)
+                return Ok(tup);
+            else
+                return NotFound();
         }
     }
 }
