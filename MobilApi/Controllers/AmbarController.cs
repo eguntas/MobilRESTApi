@@ -22,21 +22,30 @@ namespace MobilApi.Controllers
         public ActionResult GetAmbar()
         {
             var ambar = _appRepository.GetAmbar();
-            return Ok(ambar);
+            if(ambar!=null)
+                return Ok(ambar);
+            else
+                return Notfound();
         }
         [HttpGet]
         [Route("Find/{id}")]
         public ActionResult GetAmbarById(int id)
         {
             var ambar = _appRepository.GetAmbarById(id);
-            return Ok(ambar);
+            if(ambar!= null)
+                return Ok(ambar);
+            else
+                return NotFound();
         }
         [HttpGet]
         [Route("Findname/{AmbarAdi}")]
         public ActionResult GetAmbarByAd(string AmbarAdi)
         {
             var ambar = _appRepository.GetAmbarByAd(AmbarAdi);
-            return Ok(ambar);
+            if(ambar!= null)
+                return Ok(ambar);
+            else
+                return NotFound();
         }
 
     }
