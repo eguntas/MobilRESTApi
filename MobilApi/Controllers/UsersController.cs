@@ -34,13 +34,19 @@ namespace MobilApi.Controllers
                 UserId = e.UserId
 
             }).ToList();
-            return Ok(user);
+            if(user!=null)
+                return Ok(user);
+            else
+                return NotFound();
         }
         [Route("find/{id}/{password}")]
         public ActionResult GetKullaniciById(string id, string password)
         {
             var user = _appRepository.GetKullaniciById(id, password);
-            return Ok(user);
+            if(user!=null)
+                return Ok(user);
+            else
+                return NotFound();
         }
         [HttpPost]
         [Route("Add")]
