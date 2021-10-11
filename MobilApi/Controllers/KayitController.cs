@@ -40,13 +40,19 @@ namespace MobilApi.Controllers
 
 
             }).ToList();
-            return Ok(kayit);
+            if(kayit!=null)
+                return Ok(kayit);
+            else
+                return NotFound();
         }
         [Route("Find/{id}")]
         public ActionResult GetKayitById(int id)
         {
             var kayit = _appRepository.GetKayitById(id);
-            return Ok(kayit);
+            if(kayit!=null)
+                return Ok(kayit);
+            else
+                return NotFound();
 
         }
 
@@ -70,14 +76,20 @@ namespace MobilApi.Controllers
         public ActionResult GetTupKayit()
         {
             var tup = _appRepository.GetTupKayit().ToList();
-            return Ok(tup);
+            if(tup!= null)
+                return Ok(tup);
+            else
+                return NotFound();
         }
 
         [Route("TupKayitById/{id}")]
         public ActionResult GetTupKayitById(int id)
         {
             var tup = _appRepository.GetTupKayitById(id);
-            return Ok(tup);
+            if(tup!=null)
+                return Ok(tup);
+            else
+                return NotFound();
         }
 
         /*public ActionResult AddTupKayit([FromBody] TupTanimTbl TupKayit)
@@ -96,35 +108,50 @@ namespace MobilApi.Controllers
         public ActionResult GetKayitHareket()
         {
             var kayit = _appRepository.GetKayitHareket().ToList();
-            return Ok(kayit);
+            if(kayit!=null)
+                return Ok(kayit);
+            else
+                return NotFound();
         }
         [HttpGet]
         [Route("Kayitlar")]
         public ActionResult GetKayits()
         {
             var kayit = _appRepository.GetKayitTbls();
-            return Ok(kayit);
+            if(kayit!=null)
+                return Ok(kayit);
+            else    
+                return NotFound();
         }
         [HttpGet]
         [Route("KayitTarih/{GirisTarih}/{CikisTarih}")]
         public ActionResult GetKayitTarih(DateTime GirisTarih, DateTime CikisTarih)
         {
             var kayit = _appRepository.GetKayitTarih(GirisTarih, CikisTarih);
-            return Ok(kayit);
+            if(kayit!=null)
+                return Ok(kayit);
+            else
+                return NotFound();
         }
         [HttpGet]
         [Route("KayitStok/{TupDurums}/{GirisTarihi}")]
         public ActionResult GetStokDurum(int TupDurums, DateTime GirisTarihi)
         {
             var kayit = _appRepository.GetKayitTupStok(GirisTarihi, TupDurums);
-            return Ok(kayit);
+            if(kayit!=null)
+                return Ok(kayit);
+            else
+                return NotFound();
         }
         [HttpGet]
         [Route("findseri/{TupSeriNo}")]
         public ActionResult GetSeriBul(int TupSeriNo)
         {
             var kayit = _appRepository.GetKayitBySeri(TupSeriNo);
-            return Ok(kayit);
+            if(kayit!=null)
+                return Ok(kayit);
+            else
+                return NotFound();
         }
        
         
