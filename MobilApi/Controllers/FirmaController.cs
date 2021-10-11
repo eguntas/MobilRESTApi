@@ -35,20 +35,29 @@ namespace MobilApi.Controllers
         public ActionResult Get()
         {
             var firma = _appRepository.GetFirma().ToList();
-            return Ok(firma);
+            if(firma != null)
+                return Ok(firma);
+            else
+                return NotFound();
         }
         [Route("Find/{id}")]
         public ActionResult GetFirmaById(int id)
         {
             var firma = _appRepository.GetFirmaById(id);
-            return Ok(firma);
+            if(firma!=null)
+                return Ok(firma);
+            else
+                return NotFound();
         }
         [HttpGet]
         [Route("Findname/{FirmaAdi}")]
         public ActionResult GetFirmaByAdi(String FirmaAdi)
         {
             var firma = _appRepository.GetFirmaByFirmaAdi(FirmaAdi);
-            return Ok(firma);
+            if(firma!=null)
+                return Ok(firma);
+            else    
+                return NotFound();    
         }
     }
 }
